@@ -1,0 +1,16 @@
+{
+  "id": "unit-01",
+  "title": "プロンプトのきほん",
+  "subtitle": "AIに上手に頼む第一歩",
+  "description": "AIに何をどう頼めば思い通りの答えが返ってくるのか。基本のコツを8レッスンでマスター。",
+  "lessons": [
+    "lesson-01-greeting",
+    "lesson-02-role",
+    "lesson-03-purpose",
+    "lesson-04-structure",
+    "lesson-05-ideation",
+    "lesson-06-audience",
+    "lesson-07-claude-vs-gemini",
+    "lesson-08-final-challenge"
+  ]
+}

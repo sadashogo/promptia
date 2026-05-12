@@ -1,0 +1,26 @@
+{
+  "id": "lesson-07-claude-vs-gemini",
+  "unit": "unit-01",
+  "order": 7,
+  "title": "Claude と Gemini を使い分け",
+  "subtitle": "それぞれの得意分野",
+  "lesson": "ClaudeとGeminiは少しずつ得意分野が違います。Claude（Anthropic製）は丁寧な文章作成や長文の要約・コーディング、Gemini（Google製）は最新情報の検索や画像理解が得意です。同じ質問でも返ってくる答えが違うので、用途に合わせて使い分けましょう。",
+  "difficulty": "normal",
+  "type": "comparison",
+  "rewards": { "xp": 60 },
+  "question": "「明日の東京の天気を教えて」と聞きました。どちらの答えが信頼できる？",
+  "items": [
+    {
+      "label": "Claude",
+      "prompt": "明日の東京の天気を教えて",
+      "response": "私は天気予報のリアルタイム情報にアクセスできないため、正確な明日の天気はお伝えできません。気象庁（jma.go.jp）や Yahoo!天気でご確認をおすすめします。"
+    },
+    {
+      "label": "Gemini",
+      "prompt": "明日の東京の天気を教えて",
+      "response": "明日の東京は晴れのち曇り、最高気温22度、最低気温15度の予想です。午後から雲が増えますが、降水確率は20%で雨の可能性は低いです。（Google検索結果から）"
+    }
+  ],
+  "betterIndex": 1,
+  "explanation": "リアルタイム情報や検索が必要な場面ではGeminiが強い（Google検索と直結）。一方、長文の要約や丁寧な文章作成、複雑な思考が必要な場面ではClaudeが強い、と覚えておくと使い分けしやすいです。"
+}
