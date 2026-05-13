@@ -1,6 +1,7 @@
 import { LessonPath } from "@/components/home/LessonPath";
 import { StatsBar } from "@/components/home/StreakBadge";
 import { DailyGoalBanner } from "@/components/home/DailyGoalBanner";
+import { BottomNav } from "@/components/nav/BottomNav";
 import { getAllUnits, getLessonsForUnit } from "@/lib/content";
 
 export default function HomePage() {
@@ -23,9 +24,7 @@ export default function HomePage() {
         <LessonPath unit={unit} lessons={lessons} />
       </main>
 
-      <footer className="border-t border-stone-200 bg-white px-4 py-3 text-center text-xs text-stone-500">
-        AI を遊びながら身につけよう
-      </footer>
+      <BottomNav />
     </div>
   );
 }

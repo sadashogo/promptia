@@ -13,6 +13,7 @@ import { PRESET_TEMPLATES } from "@/lib/preset-templates";
 import { cn } from "@/lib/utils";
 import { PromptCard } from "./PromptCard";
 import { PresetCard } from "./PresetCard";
+import { BottomNav } from "@/components/nav/BottomNav";
 
 type Tab = "preset" | "saved";
 
@@ -72,7 +73,7 @@ export function LibraryView() {
   };
 
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-xl flex-col">
+    <div className="mx-auto flex min-h-dvh w-full max-w-xl flex-col bg-stone-50">
       <header className="sticky top-0 z-20 border-b border-stone-200 bg-white/80 backdrop-blur">
         <div className="flex items-center gap-3 px-4 py-3">
           <Link
@@ -163,6 +164,8 @@ export function LibraryView() {
           </ListSection>
         )}
       </main>
+
+      <BottomNav />
     </div>
   );
 }

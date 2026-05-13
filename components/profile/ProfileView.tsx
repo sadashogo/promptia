@@ -7,6 +7,7 @@ import type { Lesson } from "@/lib/types";
 import { useProgress } from "@/lib/store";
 import { getRank, getNextRank, rankProgress, DAILY_GOAL_XP } from "@/lib/ranks";
 import { Pio } from "@/components/pio/Pio";
+import { BottomNav } from "@/components/nav/BottomNav";
 import { cn } from "@/lib/utils";
 
 interface ProfileViewProps {
@@ -240,6 +241,8 @@ export function ProfileView({ lessons }: ProfileViewProps) {
           )}
         </section>
       </main>
+
+      <BottomNav />
     </div>
   );
 }
