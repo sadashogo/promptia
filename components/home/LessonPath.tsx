@@ -119,6 +119,27 @@ function LessonNode({ lesson, completed, unlocked, isCurrent }: LessonNodeProps)
       <div className="max-w-[10rem] text-center text-xs font-semibold leading-tight text-stone-700">
         {lesson.title}
       </div>
+      <div className="flex items-center gap-1.5 text-[10px] font-semibold">
+        {lesson.difficulty && (
+          <span
+            className={cn(
+              "rounded-full px-1.5 py-0.5",
+              lesson.difficulty === "easy" && "bg-emerald-100 text-emerald-700",
+              lesson.difficulty === "normal" && "bg-amber-100 text-amber-700",
+              lesson.difficulty === "hard" && "bg-rose-100 text-rose-700",
+            )}
+          >
+            {lesson.difficulty === "easy"
+              ? "初級"
+              : lesson.difficulty === "normal"
+                ? "中級"
+                : "上級"}
+          </span>
+        )}
+        {lesson.estimatedMinutes && (
+          <span className="text-stone-500">·{lesson.estimatedMinutes}分</span>
+        )}
+      </div>
       {completed && (
         <div className="flex items-center gap-1 text-[10px] font-semibold text-amber-600">
           <Check className="h-3 w-3" /> CLEAR

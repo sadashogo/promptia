@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, Check, Flame, RotateCcw, Star, Zap } from "lucide-react";
+import { ArrowLeft, BookOpen, Check, ChevronRight, Flame, RotateCcw, Star, Zap } from "lucide-react";
 import { useState } from "react";
 import type { Lesson } from "@/lib/types";
 import { useProgress } from "@/lib/store";
@@ -18,6 +18,7 @@ export function ProfileView({ lessons }: ProfileViewProps) {
   const todayXp = useProgress((s) => s.todayXp);
   const streakDays = useProgress((s) => s.streakDays);
   const lessonState = useProgress((s) => s.lessons);
+  const savedPromptCount = useProgress((s) => s.savedPrompts.length);
   const hasHydrated = useProgress((s) => s.hasHydrated);
   const resetAll = useProgress((s) => s.resetAll);
   const [confirming, setConfirming] = useState(false);
@@ -124,6 +125,28 @@ export function ProfileView({ lessons }: ProfileViewProps) {
             value={`${completedCount}/${lessons.length}`}
             color="emerald"
           />
+        </section>
+
+        <section className="mb-8">
+          <Link
+            href="/library"
+            className="flex items-center gap-3 rounded-2xl border border-emerald-200 bg-white p-4 shadow-sm transition-colors hover:bg-emerald-50/50"
+          >
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+              <BookOpen className="h-5 w-5" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="text-sm font-bold text-stone-900">
+                マイプロンプト集
+              </div>
+              <div className="mt-0.5 text-xs text-stone-500">
+                {hasHydrated && savedPromptCount > 0
+                  ? `${savedPromptCount}件のテンプレを保存中`
+                  : "レッスンで気に入ったテンプレを保存しよう"}
+              </div>
+            </div>
+            <ChevronRight className="h-5 w-5 shrink-0 text-stone-400" />
+          </Link>
         </section>
 
         <section className="mb-8">

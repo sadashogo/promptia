@@ -6,6 +6,19 @@
   "subtitle": "それぞれの得意分野",
   "lesson": "ClaudeとGeminiは少しずつ得意分野が違います。Claude（Anthropic製）は丁寧な文章作成や長文の要約・コーディング、Gemini（Google製）は最新情報の検索や画像理解が得意です。同じ質問でも返ってくる答えが違うので、用途に合わせて使い分けましょう。",
   "difficulty": "normal",
+  "estimatedMinutes": 4,
+  "keyPoints": [
+    "Claude → 文章作成・要約・思考が必要なタスク",
+    "Gemini → 最新情報の検索・画像理解・Googleサービス連携",
+    "迷ったら同じプロンプトを両方に投げて答えを比べる"
+  ],
+  "practicalScenario": "「これどっちのAIに聞こう？」と迷う時に、用途別に使い分けられると時間の節約になります。",
+  "practicalTemplate": {
+    "title": "AI使い分けチートシート",
+    "tag": "comparison",
+    "template": "【Claude が得意】\n- 長文の要約・添削\n- 丁寧なメール・文章作成\n- コードレビュー・複雑な思考\n\n【Gemini が得意】\n- 最新ニュース・天気・株価\n- 画像の中身を読み取る\n- Googleドキュメントとの連携\n\n【迷ったら】両方に同じプロンプトを投げて比較",
+    "example": ""
+  },
   "type": "comparison",
   "rewards": { "xp": 60 },
   "question": "「明日の東京の天気を教えて」と聞きました。どちらの答えが信頼できる？",

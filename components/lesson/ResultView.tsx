@@ -3,23 +3,29 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Zap } from "lucide-react";
+import type { PracticalTemplate } from "@/lib/types";
 import { Pio } from "@/components/pio/Pio";
 import { PioBubble } from "@/components/pio/PioBubble";
+import { PracticalTemplateCard } from "./PracticalTemplateCard";
 
 interface ResultViewProps {
+  lessonId: string;
   lessonTitle: string;
   correct: number;
   total: number;
   xp: number;
   nextLessonId?: string;
+  practicalTemplate?: PracticalTemplate;
 }
 
 export function ResultView({
+  lessonId,
   lessonTitle,
   correct,
   total,
   xp,
   nextLessonId,
+  practicalTemplate,
 }: ResultViewProps) {
   const allCorrect = total > 0 && correct === total;
   const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
@@ -79,9 +85,16 @@ export function ResultView({
             ? "全問正解、すばらしい！この調子でどんどん進もう！"
             : "クリアおめでとう！間違えたところはまた挑戦してみよう。"}
         </PioBubble>
+
+        {practicalTemplate && (
+          <PracticalTemplateCard
+            template={practicalTemplate}
+            fromLessonId={lessonId}
+          />
+        )}
       </div>
 
-      <div className="flex w-full flex-col gap-2">
+      <div className="mt-6 flex w-full flex-col gap-2">
         {nextLessonId ? (
           <Link
             href={`/lesson/${nextLessonId}`}

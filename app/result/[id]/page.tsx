@@ -16,11 +16,13 @@ export default async function ResultPage(props: PageProps<"/result/[id]">) {
   return (
     <div className="min-h-dvh bg-stone-50">
       <ResultView
+        lessonId={lesson.id}
         lessonTitle={lesson.title}
         correct={correct}
         total={total}
         xp={xp}
         nextLessonId={nextLessonId}
+        practicalTemplate={lesson.practicalTemplate}
       />
     </div>
   );

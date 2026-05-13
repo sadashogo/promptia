@@ -3,6 +3,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { daysBetween, todayKey } from "./utils";
+import type { SavedPrompt } from "./types";
 
 export interface LessonProgress {
   completedAt: string;
@@ -16,9 +17,13 @@ interface ProgressState {
   streakDays: number;
   lastActiveDate: string | null;
   lessons: Record<string, LessonProgress>;
+  savedPrompts: SavedPrompt[];
   hasHydrated: boolean;
   setHydrated: (v: boolean) => void;
   completeLesson: (lessonId: string, xp: number, score?: number) => void;
+  savePrompt: (prompt: Omit<SavedPrompt, "id" | "savedAt">) => void;
+  removeSavedPrompt: (id: string) => void;
+  isLessonPromptSaved: (lessonId: string) => boolean;
   resetAll: () => void;
 }
 
@@ -32,6 +37,7 @@ export const useProgress = create<ProgressState>()(
       streakDays: 0,
       lastActiveDate: null,
       lessons: {},
+      savedPrompts: [],
       hasHydrated: false,
       setHydrated: (v) => set({ hasHydrated: v }),
       completeLesson: (lessonId, xp, score) => {
@@ -72,6 +78,26 @@ export const useProgress = create<ProgressState>()(
           },
         });
       },
+      savePrompt: (prompt) => {
+        const id =
+          typeof crypto !== "undefined" && "randomUUID" in crypto
+            ? crypto.randomUUID()
+            : `sp-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+        set({
+          savedPrompts: [
+            { ...prompt, id, savedAt: todayKey() },
+            ...get().savedPrompts,
+          ],
+        });
+      },
+      removeSavedPrompt: (id) => {
+        set({
+          savedPrompts: get().savedPrompts.filter((p) => p.id !== id),
+        });
+      },
+      isLessonPromptSaved: (lessonId) => {
+        return get().savedPrompts.some((p) => p.fromLessonId === lessonId);
+      },
       resetAll: () =>
         set({
           totalXp: 0,
@@ -79,6 +105,7 @@ export const useProgress = create<ProgressState>()(
           streakDays: 0,
           lastActiveDate: null,
           lessons: {},
+          savedPrompts: [],
         }),
     }),
     {

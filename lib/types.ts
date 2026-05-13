@@ -1,3 +1,5 @@
+import type { PromptTag } from "./prompt-tags";
+
 export type LessonType =
   | "choice"
   | "fill-in-prompt"
@@ -5,6 +7,23 @@ export type LessonType =
   | "free-write";
 
 export type Difficulty = "easy" | "normal" | "hard";
+
+export interface PracticalTemplate {
+  title: string;
+  tag: PromptTag;
+  template: string;
+  example?: string;
+}
+
+export interface SavedPrompt {
+  id: string;
+  title: string;
+  tag: PromptTag;
+  template: string;
+  example?: string;
+  fromLessonId?: string;
+  savedAt: string;
+}
 
 export interface ChoiceQuestion {
   prompt: string;
@@ -52,6 +71,10 @@ export interface BaseLesson {
   subtitle?: string;
   lesson: string;
   difficulty?: Difficulty;
+  estimatedMinutes?: number;
+  keyPoints?: string[];
+  practicalScenario?: string;
+  practicalTemplate?: PracticalTemplate;
   rewards: { xp: number };
 }
 
