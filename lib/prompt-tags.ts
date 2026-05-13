@@ -4,6 +4,10 @@ export type PromptTag =
   | "explanation"
   | "ideation"
   | "comparison"
+  | "email"
+  | "meeting"
+  | "summary"
+  | "research"
   | "other";
 
 export interface TagInfo {
@@ -50,6 +54,34 @@ export const TAG_INFO: Record<PromptTag, TagInfo> = {
     textClass: "text-purple-700",
     ringClass: "ring-purple-200",
   },
+  email: {
+    label: "メール",
+    emoji: "📧",
+    bgClass: "bg-sky-50",
+    textClass: "text-sky-700",
+    ringClass: "ring-sky-200",
+  },
+  meeting: {
+    label: "会議",
+    emoji: "🤝",
+    bgClass: "bg-indigo-50",
+    textClass: "text-indigo-700",
+    ringClass: "ring-indigo-200",
+  },
+  summary: {
+    label: "要約",
+    emoji: "📝",
+    bgClass: "bg-teal-50",
+    textClass: "text-teal-700",
+    ringClass: "ring-teal-200",
+  },
+  research: {
+    label: "リサーチ",
+    emoji: "🔍",
+    bgClass: "bg-fuchsia-50",
+    textClass: "text-fuchsia-700",
+    ringClass: "ring-fuchsia-200",
+  },
   other: {
     label: "その他",
     emoji: "📌",
@@ -65,6 +97,10 @@ export const ALL_TAGS: PromptTag[] = [
   "explanation",
   "ideation",
   "comparison",
+  "email",
+  "meeting",
+  "summary",
+  "research",
   "other",
 ];
 
